@@ -1,5 +1,5 @@
 name: Build and test
-on: push
+on: [push, pull_request]
 
 jobs:
   build:
@@ -32,19 +32,18 @@ jobs:
             ${{ runner.os }}-gems-
 
       - name: Use Node.js
-        uses: actions/setup-node@v1
-        with: { node-version: '15.x' }
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.14.2'
+          cache: yarn
 
       - name: Use Ruby
-        uses: actions/setup-ruby@v1
-        with: { ruby-version: '2.7' }
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7.5'
+          bundler-cache: true
 
-      - name: Setup dependencies
-        run: |
-          yarn --frozen-lockfile
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-
+      - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: yarn test
       - run: yarn test:smoke

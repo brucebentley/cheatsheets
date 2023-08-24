@@ -60,11 +60,13 @@ ___bold italic___
 
 ```markdown
 * Item 1
+  * Nested Item 1
 * Item 2
 ```
 
 ```markdown
 - Item 1
+  - Nested Item 1
 - Item 2
 ```
 
@@ -98,14 +100,18 @@ ___bold italic___
 ```markdown
 ![Image alt text](/path/to/img.jpg)
 ![Image alt text](/path/to/img.jpg "title")
-![Image alt text][img]
 ```
 
 ```markdown
+![Image alt text][img]
 [img]: http://foo.com/img.jpg
 ```
 
 ### Code
+
+```markdown
+`inline code`
+```
 
 ```
     4 space indent

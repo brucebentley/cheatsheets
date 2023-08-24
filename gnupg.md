@@ -36,7 +36,7 @@ gpg --import key.asc
 Only merge updates for keys already in key-ring:
 
 ```bash
-gpg --import key.asc --merge-options merge-only
+gpg --import key.asc --import-options merge-only
 ```
 
 ### Managing your keyring
@@ -103,7 +103,7 @@ gpg --keyserver <URL> ...
 ```bash
 gpg --edit-key <KEY ID>
 # In the interactive prompt:
-gpg> sign
+gpg> trust
 gpg> save
 ```
 

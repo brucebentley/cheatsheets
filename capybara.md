@@ -122,11 +122,11 @@ In RSpec, you can use `page.should` assertions.
 expect(page).to have_no_button('Save')   # OK
 ```
 ```ruby
-expect(page).not_to have_button('Save')  # Bad
+expect(page).not_to have_button('Save')  # OK
 ```
-
-Use `should have_no_*` versions with RSpec matchers because
-`should_not have_*` doesn't wait for a timeout from the driver.
+```ruby
+!expect(page).to have_button('Save')  # Bad
+```
 
 ## RSpec
 
@@ -138,6 +138,7 @@ expect(page).to \
 {: .-setup}
 
 ```ruby
+  have_current_path(expected_path)
   have_selector '.blank-state'
   have_selector 'h1#hola', text: 'Welcome'
   have_button 'Save'
@@ -266,7 +267,7 @@ page.status_code == 200
 page.response_headers
 ```
 
-See: <http://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Session>
+See: <https://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Session>
 
 ### Poltergeist
 
@@ -333,5 +334,5 @@ page.set_rack_session(foo: 'bar')
 ## See also
 {: .-one-column}
 
-- <http://rubydoc.info/github/jnicklas/capybara/Capybara/RSpecMatchers>
-- <http://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Node/Matchers>
+- <https://rubydoc.info/github/jnicklas/capybara/Capybara/RSpecMatchers>
+- <https://www.rubydoc.info/github/jnicklas/capybara/master/Capybara/Node/Matchers>

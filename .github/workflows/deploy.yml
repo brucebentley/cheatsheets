@@ -1,5 +1,5 @@
 name: Deploy
-on: 
+on:
   push:
     branches:
       main
@@ -11,13 +11,9 @@ jobs:
     steps:
       - name: "Notes (read me) 📖"
         run: |
-          # About this workflow
-          # -------------------
-          #
+          # About this workflow:
           # This workflow generates GitHub pages, but IT IS NOT USED. It is
-          # only generated as an emergency fallback in case Netlify goes down.
-          #
-          # 😊
+          # only generated as an emergency fallback in case Netlify goes down 😊
 
       - uses: actions/checkout@v2
         with:
@@ -47,19 +43,18 @@ jobs:
             ${{ runner.os }}-gems-
 
       - name: Use Node.js
-        uses: actions/setup-node@v1
-        with: { node-version: '15.x' }
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.14.2'
+          cache: yarn
 
       - name: Use Ruby
-        uses: actions/setup-ruby@v1
-        with: { ruby-version: '2.7' }
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7.5'
+          bundler-cache: true
 
-      - name: Setup dependencies
-        run: |
-          yarn --frozen-lockfile
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-
+      - run: yarn install --frozen-lockfile
       - run: yarn build
 
       - name: "Deploy to gh-pages 🚀"

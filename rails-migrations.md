@@ -1,6 +1,7 @@
 ---
-title: Migrations
+title: Rails migrations
 category: Rails
+layout: 2017/sheet
 ---
 
 ### Automatically make migrations
@@ -119,4 +120,4 @@ Use `ActiveRecord::Migration`.
 
 ### References
 
- * http://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_index
+ * https://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_index
